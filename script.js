@@ -29,3 +29,10 @@ GenerateCardClick.addEventListener('click', () => {
     GenerateCard();
   }
 });
+
+const cardClick = document.getElementById('carta-gerada');
+cardClick.addEventListener('click', (e) => {
+  const currentClass = e.target.classList.value;
+  e.target.classList.remove(currentClass);
+  e.target.classList.add(generateRandomClass());
+});
