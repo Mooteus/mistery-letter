@@ -9,8 +9,6 @@ function generateRandomClass() {
 }
 
 function GenerateCard() {
-  cardContainer.innerHTML = '';
-
   const cardWords = document.getElementById('carta-texto').value.split(' ');
 
   const countWords = document.getElementById('carta-contador');
@@ -21,7 +19,10 @@ function GenerateCard() {
   for (let i = 0; i < cardWords.length; i += 1) {
     card = document.createElement('span');
     card.innerHTML = cardWords[i];
-    card.classList.add(generateRandomClass());
+
+    while (card.classList.length < 4) {
+      card.classList.add(generateRandomClass());
+    }
     cardContainer.appendChild(card);
   }
 }
@@ -37,7 +38,14 @@ GenerateCardClick.addEventListener('click', () => {
   }
 });
 
+function generateNewClassList(e) {
+  e.target.classList = '';
+  while (e.target.classList.length < 4) {
+    e.target.classList.add(generateRandomClass());
+  }
+}
+
 const cardClick = cardContainer;
 cardClick.addEventListener('click', (e) => {
-  GenerateCard();
+  generateNewClassList(e);
 });
