@@ -35,3 +35,18 @@
   padding: 15px;
 }
 
+.rotateleft {
+  transform: rotate(-5deg);
+}
+
+.rotateright {
+  transform: rotate(5deg);
+}
+
+.skewleft {
+  transform: skewX(10deg);
+}
+
+.skewright {
+  transform: skewX(-10deg);
+}
