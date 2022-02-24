@@ -9,6 +9,8 @@ function generateRandomClass() {
 }
 
 function GenerateCard() {
+  cardContainer.innerHTML = '';
+
   const cardWords = document.getElementById('carta-texto').value.split(' ');
 
   const countWords = document.getElementById('carta-contador');
@@ -37,7 +39,5 @@ GenerateCardClick.addEventListener('click', () => {
 
 const cardClick = cardContainer;
 cardClick.addEventListener('click', (e) => {
-  const currentClass = e.target.classList.value;
-  e.target.classList.remove(currentClass);
-  e.target.classList.add(generateRandomClass());
+  GenerateCard();
 });
