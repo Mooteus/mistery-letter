@@ -1,3 +1,5 @@
+const cardContainer = document.getElementById('carta-gerada');
+
 function generateRandomClass() {
   const cardClassList = ['newspaper', 'magazine1', 'magazine2',
     'medium', 'big', 'reallybig', 'rotateleft', 'rotateright',
@@ -7,21 +9,24 @@ function generateRandomClass() {
 }
 
 function GenerateCard() {
-  const CardContainer = document.getElementById('carta-gerada');
   const cardWords = document.getElementById('carta-texto').value.split(' ');
+
+  const countWords = document.getElementById('carta-contador');
+  countWords.innerText = cardWords.length;
+
   let card;
+
   for (let i = 0; i < cardWords.length; i += 1) {
     card = document.createElement('span');
     card.innerHTML = cardWords[i];
     card.classList.add(generateRandomClass());
-    CardContainer.appendChild(card);
+    cardContainer.appendChild(card);
   }
 }
 
 const GenerateCardClick = document.getElementById('criar-carta');
 GenerateCardClick.addEventListener('click', () => {
   const cardText = document.getElementById('carta-texto').value;
-  const cardContainer = document.getElementById('carta-gerada');
   if (cardText.trim() === '') {
     cardContainer.innerText = 'Por favor, digite o conteúdo da carta.';
   } else {
@@ -30,7 +35,7 @@ GenerateCardClick.addEventListener('click', () => {
   }
 });
 
-const cardClick = document.getElementById('carta-gerada');
+const cardClick = cardContainer;
 cardClick.addEventListener('click', (e) => {
   const currentClass = e.target.classList.value;
   e.target.classList.remove(currentClass);
